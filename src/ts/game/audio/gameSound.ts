@@ -4,21 +4,23 @@ import SoundPlayer from "./SoundPlayer";
 export const DEFAULT_MUSIC_VOLUME = 0.04;
 export const DEFAULT_VOLUME = 0.25;
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 export async function initGameSounds() {
-    const res = await fetch("assets/music/puzzleConnectSounds.json");
+    const res = await fetch(`${BASE_URL}assets/music/puzzleConnectSounds.json`);
     const files: string[] = await res.json();
-    let puzzleConnectSounds: string[] = files;
-    const victorySoundPath = "assets/music/victorySounds/VictorySound.wav";
-    const victorySoundExpertPath = "assets/music/victorySounds/VictorySoundExpert.wav";
+    let puzzleConnectSounds: string[] = files.map(file => `${BASE_URL}${file}`);
+    const victorySoundPath = `${BASE_URL}assets/music/victorySounds/VictorySound.wav`;
+    const victorySoundExpertPath = `${BASE_URL}assets/music/victorySounds/VictorySoundExpert.wav`;
 
     let backgroundSong: AudioInstance | undefined;
     tryStartBackgroundSong();
 
     // Try to start background music immediately, if didnt worked wait until interaction
     function tryStartBackgroundSong() {
-        backgroundSong = SoundPlayer.play("assets/music/background.wav", DEFAULT_MUSIC_VOLUME, true, (_error: Error) => {
+        backgroundSong = SoundPlayer.play(`${BASE_URL}assets/music/background.wav`, DEFAULT_MUSIC_VOLUME, true, (_error: Error) => {
             document.addEventListener('click', () => {
-                backgroundSong = SoundPlayer.play("assets/music/background.wav", DEFAULT_MUSIC_VOLUME, true);
+                backgroundSong = SoundPlayer.play(`${BASE_URL}assets/music/background.wav`, DEFAULT_MUSIC_VOLUME, true);
             }, { once: true });
         });
     }
