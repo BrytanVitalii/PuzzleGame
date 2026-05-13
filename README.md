@@ -2,7 +2,7 @@
 
 An interactive web-based jigsaw puzzle game built with TypeScript and Vite.
 
-## ✨ Features
+## Features
 
 - 4 difficulty levels: Easy (9), Medium (16), Hard (32), Expert (64) pieces
 - 3 puzzle images to solve
@@ -10,31 +10,33 @@ An interactive web-based jigsaw puzzle game built with TypeScript and Vite.
 - Volume control and sound effects
 - Victory screen celebration
 
-## 🚀 Quick Start
+## Author
+
+Brytan Vitalii (v0.9)
+
+
+# 🧑‍💻 Quick Start
 
 ```bash
 npm install
 npm run dev
 ```
 
-Visit `http://localhost:5173`
-
-## 📋 Scripts
-
-- `npm run dev` - Development server
-- `npm run build` - Production build
-- `npm run preview` - Preview build
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 - TypeScript 6.0.2
 - Vite 8.0.10
 - Canvas API
 
-## 👤 Author
 
-Brytan Vitalii (v0.9)
+Visit `http://localhost:5173`
 
-## 📄 License
+## Scripts
+
+- `npm run dev` - Development server
+- `npm run build` - Production build
+- `npm run preview` - Preview build
+
+## License
 
 MIT License - see LICENSE file for details
