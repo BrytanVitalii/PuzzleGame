@@ -34,10 +34,6 @@ export function initSlider(wrapper: HTMLElement | null): Slider | undefined {
         update();
     });
 
-    function getCurrentIndex() {
-        return index;
-    }
-
     return {
         getIndex: () => index,
     }

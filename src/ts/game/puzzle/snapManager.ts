@@ -49,7 +49,6 @@ function snap(
     pieceB: PuzzlePiece,
     getGroupByPiece: (p: PuzzlePiece) => PieceGroup | undefined
 ) {
-    const groupA = getGroupByPiece(pieceA);
     const groupB = getGroupByPiece(pieceB);
 
     const movingPieces = groupB?.pieces ?? [pieceB];

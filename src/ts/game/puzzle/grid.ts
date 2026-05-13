@@ -1,5 +1,3 @@
-import type { PuzzlePiece } from "./puzzlePiece";
-
 type Grid = {
     rows: number;
     cols: number;

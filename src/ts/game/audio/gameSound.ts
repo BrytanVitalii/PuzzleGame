@@ -16,7 +16,7 @@ export async function initGameSounds() {
 
     // Try to start background music immediately, if didnt worked wait until interaction
     function tryStartBackgroundSong() {
-        backgroundSong = SoundPlayer.play("assets/music/background.wav", DEFAULT_MUSIC_VOLUME, true, (error: Error) => {
+        backgroundSong = SoundPlayer.play("assets/music/background.wav", DEFAULT_MUSIC_VOLUME, true, (_error: Error) => {
             document.addEventListener('click', () => {
                 backgroundSong = SoundPlayer.play("assets/music/background.wav", DEFAULT_MUSIC_VOLUME, true);
             }, { once: true });

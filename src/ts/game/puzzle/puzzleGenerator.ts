@@ -1,6 +1,5 @@
 import type { Difficulty } from "../difficulty";
 import { getGrid } from "./grid";
-import { loadImage } from "./loadImage";
 import { PuzzlePiece } from "./puzzlePiece";
 
 export async function getPuzzles(image: HTMLImageElement, difficulty: Difficulty, canvasDimensions: CanvasDimensions): Promise<PuzzlePiece[]> {
