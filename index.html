@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/src/css/index.css">
+
+  <title>Puzzle Game</title>
+</head>
+
+<body>
+  <div class="menu-wrapper">
+    <div class="menu" id="menu">
+      <h1 class="menu-header font-main">Puzzle Game</h1>
+      <div class="menu__controls font-secondary">
+        <button class="menu__upload">
+          <img class="menu__upload-image" src="assets/upload.png" alt="">
+        </button>
+
+        <div class="menu__buttons">
+          <button class="menu__play-button">PLAY</button>
+          <button class="menu__settings-button">SETTINGS</button>
+        </div>
+      </div>
+
+      <div class="settings font-main" id="settings-menu">
+        <div class="settings__volume-slider-wrapper">
+          <label class="settings__volume-slider-name">Volume:</label>
+          <input class="settings__volume-slider" type="range" name="volume-slider" min="0" max="0.6" step="0.01">
+        </div>
+      </div>
+
+      <div class="menu__creator-note font-secondary">
+        Made by Brytan Vitalii · v0.9
+      </div>
+    </div>
+  </div>
+
+  <div class="level-select-wrapper" id="level-select-modal">
+    <div class="level-select" id="level-select">
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="slider__track">
+            <img class="slider__track-item" src="assets/puzzles/artemis.jpg"></img>
+            <img class="slider__track-item" src="assets/puzzles/mountain-view.jpg"></img>
+            <img class="slider__track-item" src="assets/puzzles/steve.jpg"></img>
+          </div>
+        </div>
+
+        <button class="slider-wrapper__arrow-back" aria-label="Previous slide">
+          <img class="slider-wrapper__arrow-back-image" src="assets/arrow.png" alt="">
+        </button>
+        <button class="slider-wrapper__arrow-next" aria-label="Next slide">
+          <img class="slider-wrapper__arrow-next-image" src="assets/arrow.png" alt="">
+        </button>
+      </div>
+      <div class="level-select__controls">
+        <div class="level-select__difficulty-list">
+          <button class="level-select__difficulty level-select__difficulty--easy" data-difficulty="easy">Easy</button>
+          <button class="level-select__difficulty level-select__difficulty--medium"
+            data-difficulty="medium">Medium</button>
+          <button class="level-select__difficulty level-select__difficulty--hard" data-difficulty="hard">Hard</button>
+          <button class="level-select__difficulty level-select__difficulty--expert"
+            data-difficulty="expert">Expert</button>
+        </div>
+        <button class="level-select__play-button">Play!</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-game-wrapper" id="custom-game-modal">
+    <div class="custom-game">
+      <div class="custom-game__img-wrapper">
+        <img class="custom-game__img" src="assets/no-image.png" alt="">
+      </div>
+
+      <div class="custom-game__controls">
+        <div class="custom-game__difficulty-list">
+          <button class="custom-game__difficulty custom-game__difficulty--easy" data-difficulty="easy">Easy</button>
+          <button class="custom-game__difficulty custom-game__difficulty--medium"
+            data-difficulty="medium">Medium</button>
+          <button class="custom-game__difficulty custom-game__difficulty--hard" data-difficulty="hard">Hard</button>
+          <button class="custom-game__difficulty custom-game__difficulty--expert"
+            data-difficulty="expert">Expert</button>
+        </div>
+        <button class="custom-game__play-button">Play!</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="victory-modal-wrapper font-main" id="victory-modal-wrapper">
+    <div class="victory-modal" id="victory-modal">
+      <div class="victory-modal__image-wrapper">
+        <img class="victory-modal__puzzle-img" src="assets/no-image.png" alt="">
+      </div>
+
+      <button class="victory-modal__home-button">Main Menu</button>
+    </div>
+  </div>
+
+  <div class="game" id="game">
+    <canvas class="game__canvas" id="game-canvas" class=""></canvas>
+    <img class="game__background game__background--main-menu" src="assets/background.jpg" alt=""></img>
+  </div>
+
+  <script type="module" src="/src/ts/main.ts"></script>
+</body>
+
+</html>

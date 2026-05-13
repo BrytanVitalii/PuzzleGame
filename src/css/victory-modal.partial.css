@@ -1,0 +1,51 @@
+.victory-modal-wrapper {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background-color: var(--modal-background-color);
+
+    .victory-modal {
+        background-color: var(--main-background-color);
+        width: 700px;
+        margin: auto;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+        padding: 20px;
+
+        .victory-modal__image-wrapper {
+            flex: 1;
+            border-radius: 10px;
+
+            .victory-modal__puzzle-img {
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+
+
+        .victory-modal__home-button {
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            border: medium dashed transparent;
+            font-size: 40px;
+            padding: 5px 10px;
+            transition: transform 0.1s ease-in-out;
+            text-align: center;
+
+            &:hover {
+                border: medium solid white;
+                box-shadow: 0px 0px 5px var(--glowing-white);
+                transform: scale(102%);
+            }
+
+            &:active {
+                background-color: var(--button-background-active);
+            }
+        }
+    }
+}

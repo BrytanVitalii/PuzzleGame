@@ -1,0 +1,117 @@
+/*
+  <div class="custom-game-wrapper modal-active">
+    <div class="custom-game">
+      <div class="custom-game__img-wrapper">
+        <img class="custom-game__img" src="" alt="">
+      </div>
+
+      <div class="custom-game__controls">
+        <div class="custom-game__difficulty-list">
+          <button class="custom-game__difficulty custom-game__difficulty--easy" data-difficulty="easy">Easy</button>
+          <button class="custom-game__difficulty custom-game__difficulty--medium"
+            data-difficulty="medium">Medium</button>
+          <button class="custom-game__difficulty custom-game__difficulty--hard" data-difficulty="hard">Hard</button>
+          <button class="custom-game__difficulty custom-game__difficulty--expert"
+            data-difficulty="expert">Expert</button>
+        </div>
+        <button class="custom-game__play-button">Play!</button>
+      </div>
+    </div>
+  </div>
+*/
+
+
+.custom-game-wrapper {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background-color: var(--modal-background-color);
+
+    .custom-game {
+        background-color: var(--main-background-color);
+        width: 50%;
+        height: 80%;
+        margin: auto;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        gap: 20px;
+
+        .custom-game__img-wrapper {
+            flex: 1;
+            min-height: 0;
+            width: 100%;
+
+            .custom-game__img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                border-radius: 10px;
+            }
+        }
+
+        .custom-game__controls {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            width: 500px;
+
+            .custom-game__difficulty-list {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+
+                .custom-game__difficulty {
+                    background-color: var(--button-background-color);
+                    border-radius: 5px;
+                    border: medium dashed transparent;
+                    font-size: 35px;
+                    padding: 5px 10px;
+                    transition: transform 0.1s ease-in-out;
+                    flex: 1;
+
+                    &:hover {
+                        box-shadow: 0px 3px 3px var(--accent-color);
+                        transform: scale(102%);
+                    }
+
+                    &:active {
+                        background-color: var(--button-background-active);
+                    }
+                }
+
+                .difficulty--active {
+                    background-color: var(--accent-color);
+                }
+            }
+
+            .custom-game__play-button {
+                background-color: var(--accent-color);
+                border-radius: 5px;
+                border: medium dashed transparent;
+                font-size: 50px;
+                padding: 5px 10px;
+                transition: transform 0.1s ease-in-out;
+                text-align: center;
+
+                &:hover {
+                    border: medium solid white;
+                    box-shadow: 0px 0px 5px var(--glowing-white);
+                    transform: scale(102%);
+                }
+
+                &:active {
+                    background-color: var(--button-background-active);
+                }
+            }
+        }
+    }
+}
