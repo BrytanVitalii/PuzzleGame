@@ -4,11 +4,11 @@ An interactive web-based jigsaw puzzle game built with TypeScript and Vite.
 
 ## Features
 
-- 4 difficulty levels: Easy (9), Medium (16), Hard (32), Expert (64) pieces
-- 3 puzzle images to solve
-- Smooth drag-and-drop mechanics with auto-snapping
-- Volume control and sound effects
-- Victory screen celebration
+- 4 difficulty levels: Easy (9), Medium (16), Hard (32), Expert (64) pieces!
+- 3 puzzle images to solve!
+- Smooth drag-and-drop mechanics with auto-snapping!
+- Volume control and sound effects!
+- Custom image support!
 
 ## Author
 
@@ -36,6 +36,7 @@ Visit `http://localhost:5173`
 - `npm run dev` - Development server
 - `npm run build` - Production build
 - `npm run preview` - Preview build
+- `npm run deploy` - Deploy to GitHub Pages
 
 ## License
 
