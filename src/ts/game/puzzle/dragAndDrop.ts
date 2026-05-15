@@ -1,11 +1,36 @@
-import { getMousePos } from "./mouse";
+import { getMousePos } from "../../util/mouse";
+import { moveGroupBy } from "./groupManager";
 import { PuzzlePiece } from "./puzzlePiece";
 import { SnapIfPossible } from "./snapManager";
 
 export class DragAndDropController {
     private canvas: HTMLCanvasElement;
-    private getPieces!: () => PuzzlePiece[] | undefined;
-    private getGroupByPiece!: (piece: PuzzlePiece) => PieceGroup | undefined;
+    private getPieces: () => PuzzlePiece[] | undefined;
+    private getGroupByPiece: (piece: PuzzlePiece) => PieceGroup | undefined;
+
+    private renderGroupOrPieceOnTop(piece: PuzzlePiece, index: number) {
+        const pieces = this.getPieces();
+        if (!pieces) return;
+
+        // Check if the piece is in the group
+        // If not, just move the piece to the end of the array to render on top
+        const group = this.getGroupByPiece(piece);
+        if (!group) {
+            pieces.splice(index, 1);
+            pieces.push(piece);
+
+            return;
+        }
+
+        // If the piece is in a group, move the entire group to the end of the array to render on top
+        for (const p of group.pieces) {
+            const index = pieces.findIndex(piece => piece.id === p.id);
+            if (index !== -1) {
+                pieces.splice(index, 1);
+                pieces.push(p);
+            }
+        }
+    }
 
     constructor(
         canvas: HTMLCanvasElement
@@ -37,8 +62,8 @@ export class DragAndDropController {
                     dragState.offsetX = mouse.x - piece.x;
                     dragState.offsetY = mouse.y - piece.y;
 
-                    pieces.splice(i, 1);
-                    pieces.push(piece);
+                    // Render current piece and its group on top
+                    this.renderGroupOrPieceOnTop(piece, i);
 
                     break;
                 }
@@ -60,9 +85,7 @@ export class DragAndDropController {
                 const dx = newX - piece.x;
                 const dy = newY - piece.y;
 
-                for (const p of group.pieces) {
-                    p.moveTo(p.x + dx, p.y + dy);
-                }
+                moveGroupBy(group, dx, dy);
             } else {
                 // Move single piece
                 piece.moveTo(newX, newY);
