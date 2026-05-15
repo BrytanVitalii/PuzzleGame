@@ -1,5 +1,5 @@
+import { getGrid } from "../../util/grid";
 import type { Difficulty } from "../difficulty";
-import { getGrid } from "./grid";
 import { PuzzlePiece } from "./puzzlePiece";
 
 export async function getPuzzles(image: HTMLImageElement, difficulty: Difficulty, canvasDimensions: CanvasDimensions): Promise<PuzzlePiece[]> {
@@ -91,7 +91,7 @@ function generatePuzzles(
   return pieces;
 }
 
-export async function getImageDimensions(
+async function getImageDimensions(
   img: HTMLImageElement
 ): Promise<{ width: number; height: number }> {
   return {
