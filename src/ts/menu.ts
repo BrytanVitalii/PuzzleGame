@@ -1,4 +1,4 @@
-import { DEFAULT_MUSIC_VOLUME } from "./game/audio/gameSound";
+import { DEFAULT_MUSIC_VOLUME } from "./audio/gameSound";
 
 export function initMainMenu() {
     const menu_wrapper = document.querySelector<HTMLElement>('.menu-wrapper');
@@ -10,10 +10,9 @@ export function initMainMenu() {
 
     // Get all buttons
     const playButton = menu.querySelector<HTMLElement>('.menu__play-button');
-    const uploadButton = menu.querySelector<HTMLElement>('.menu__play-button');
 
     const settingsButton = menu.querySelector<HTMLElement>('.menu__settings-button');
-    if (!playButton || !uploadButton || !settingsButton) {
+    if (!playButton || !settingsButton) {
         console.error("Main menu buttons - Not Found");
         return;
     }

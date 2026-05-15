@@ -1,4 +1,4 @@
-import { Difficulty } from "../difficulty";
+import { Difficulty } from "../game/difficulty";
 import SoundPlayer from "./SoundPlayer";
 
 export const DEFAULT_MUSIC_VOLUME = 0.04;

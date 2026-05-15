@@ -2,7 +2,7 @@ import { puzzleLevels } from "./game/levels";
 
 import { initSlider } from "./components/slider";
 import { initDiffSelector } from "./components/difficultySelector";
-import { loadImage } from "./game/puzzle/loadImage";
+import { loadImage } from "./util/loadImage";
 
 export function initLevelSelect() {
     const levelSelectModal = document.getElementById('level-select-modal');
