@@ -18,8 +18,10 @@ export async function initGameSounds() {
 
     // Try to start background music immediately, if didnt worked wait until interaction
     function tryStartBackgroundSong() {
+        if(backgroundSong) return;
         backgroundSong = SoundPlayer.play(`${BASE_URL}assets/music/background.wav`, DEFAULT_MUSIC_VOLUME, true, (_error: Error) => {
             document.addEventListener('click', () => {
+                if(backgroundSong) return;
                 backgroundSong = SoundPlayer.play(`${BASE_URL}assets/music/background.wav`, DEFAULT_MUSIC_VOLUME, true);
             }, { once: true });
         });
@@ -49,6 +51,7 @@ export async function initGameSounds() {
     });
     window.addEventListener('game:victory', (event) => {
         backgroundSong?.stop();
+        backgroundSong = undefined;
         playVictorySound(event as VictoryEvent);
     });
     window.addEventListener('game:stop-game', () => {
