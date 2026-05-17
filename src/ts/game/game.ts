@@ -4,12 +4,13 @@ import type { Difficulty } from "./difficulty";
 import { GameState } from "./gameState";
 import { getPuzzles } from "./puzzle/puzzleGenerator";
 import type { PuzzlePiece } from "./puzzle/puzzlePiece";
-import { clearCanvas, renderPuzzle } from "./puzzle/renderPuzzle";
+import { clearCanvas, handleResize, renderPuzzle } from "./puzzle/renderPuzzle";
 import { DragAndDropController } from "./puzzle/dragAndDrop";
 import { createGroup } from "./puzzle/groupManager";
 
 const canvas = document.getElementById("game-canvas") as HTMLCanvasElement;
 const ctx = setupCanvas(canvas);
+let lastCanvasDimensions = getCanvasDimensions();
 
 type Game = {
     difficulty: Difficulty;
@@ -25,6 +26,12 @@ let lastTime = 0;
 let nextGroupId = 0;
 
 let dragAndDropController: DragAndDropController = new DragAndDropController(canvas);
+
+const getGroupByPiece = (piece: PuzzlePiece) => {
+    return currentGame?.groups.find(g =>
+        g.pieces.some(p => p.id === piece.id)
+    );
+}
 
 // Game functions
 export function startGame(event: StartGameEvent) {
@@ -56,11 +63,7 @@ async function loadGame() {
 
     dragAndDropController.setCallbacks(
         () => currentGame?.puzzles,
-        (piece: PuzzlePiece) => {
-            return currentGame?.groups.find(g =>
-                g.pieces.some(p => p.id === piece.id)
-            );
-        }
+        getGroupByPiece
     )
 
     currentGame.gameState = GameState.playing;
@@ -244,4 +247,24 @@ window.addEventListener('game:piece-snap', (event) => {
             }
         }));
     }
+});
+
+// Fix render scaling on rezize.
+window.addEventListener('resize', () => {
+    const newDimensions = getCanvasDimensions();
+
+    // Recalculate canvas backing store for new DPR/size
+    setupCanvas(canvas);
+
+    // Scale existing pieces proportionally
+    if (currentGame && currentGame.puzzles) {
+        handleResize(
+            newDimensions,
+            lastCanvasDimensions,
+            () => currentGame?.puzzles,
+            getGroupByPiece
+        );
+    }
+
+    lastCanvasDimensions = newDimensions;
 });
