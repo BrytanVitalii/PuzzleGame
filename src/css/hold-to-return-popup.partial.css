@@ -1,0 +1,65 @@
+@property --progress {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.hold-to-return-popup-wrapper {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background-color: var(--modal-background-color);
+
+    .hold-to-return-popup {
+        position: relative;
+
+        width: 200px;
+        height: 200px;
+
+        border-radius: 50%;
+        overflow: hidden;
+
+        display: flex;
+        justify-content: center;
+        font-size: 25px;
+        align-items: center;
+
+        --progress: 0deg;
+
+        background:
+            conic-gradient(
+                var(--accent-color) var(--progress),
+                rgba(255,255,255,0.15) 0deg
+            );
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            inset: 16px;
+
+            border-radius: 50%;
+            background: var(--upload-background-color);
+        }
+
+        .hold-to-return-popup__text {
+            position: relative;
+            z-index: 21;
+        }
+    }
+
+    .hold-to-return-popup--holding {
+        animation: fillCircle 1s linear forwards;
+    }
+}
+
+@keyframes fillCircle {
+    from {
+        --progress: 0deg;
+    }
+
+    to {
+        --progress: 360deg;
+    }
+}

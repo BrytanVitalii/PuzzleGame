@@ -4,5 +4,6 @@
 @import url("level-select.partial.css");
 @import url("victory-modal.partial.css");
 @import url("custom-game.partial.css");
+@import url("hold-to-return-popup.partial.css");
 @import url("game.css");
 @import url("priority.css");

@@ -24,6 +24,7 @@ let running = false;
 let currentGame: Game | undefined;
 let lastTime = 0;
 let nextGroupId = 0;
+let escapePressedTime: number | undefined = undefined;
 
 let dragAndDropController: DragAndDropController = new DragAndDropController(canvas);
 
@@ -110,6 +111,13 @@ function update(_deltaTime: number) {
 
     if (currentGame.gameState === GameState.finished) {
         running = false;
+    }
+
+    // Check if escape key is being held to return to menu
+    console.log(`Difference: ${(escapePressedTime ? performance.now() - escapePressedTime : 0).toFixed(0)}ms`);
+    if (escapePressedTime && performance.now() - escapePressedTime >= 1000) {
+        window.dispatchEvent(new CustomEvent('game:stop-game'));
+        escapePressedTime = undefined;
     }
 }
 
@@ -267,4 +275,36 @@ window.addEventListener('resize', () => {
     }
 
     lastCanvasDimensions = newDimensions;
+});
+
+
+// On escape key press, show holding popup to return to menu
+window.addEventListener('keydown', (event) => {
+    if (event.key === "Escape" && running) {
+        if (event.repeat) return;
+
+        const popupWrapper = document.getElementById("hold-to-return-popup-wrapper");
+        const popup = document.getElementById("hold-to-return-popup");
+        if (!popupWrapper || !popup) return;
+
+        popupWrapper.classList.add("modal-active");
+        popup.classList.add("hold-to-return-popup--holding");
+
+        escapePressedTime = performance.now();
+    }
+});
+
+window.addEventListener('keyup', (event) => {
+    if (event.key === "Escape") {
+        const popupWrapper = document.getElementById("hold-to-return-popup-wrapper");
+        const popup = document.getElementById("hold-to-return-popup");
+        if (!popupWrapper || !popup) return;
+
+        if (escapePressedTime && performance.now() - escapePressedTime >= 1000) {
+            window.dispatchEvent(new CustomEvent('game:stop-game'));
+        }
+        popupWrapper.classList.remove("modal-active");
+        popup.classList.remove("hold-to-return-popup--holding");
+        escapePressedTime = undefined;
+    }
 });
