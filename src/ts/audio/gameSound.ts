@@ -7,11 +7,11 @@ export const DEFAULT_VOLUME = 0.25;
 const BASE_URL = import.meta.env.BASE_URL;
 
 export async function initGameSounds() {
-    const res = await fetch(`${BASE_URL}assets/music/puzzleConnectSounds.json`);
+    const res = await fetch(`${BASE_URL}assets/sounds/puzzleConnectSounds.json`);
     const files: string[] = await res.json();
     let puzzleConnectSounds: string[] = files.map(file => `${BASE_URL}${file}`);
-    const victorySoundPath = `${BASE_URL}assets/music/victorySounds/VictorySound.wav`;
-    const victorySoundExpertPath = `${BASE_URL}assets/music/victorySounds/VictorySoundExpert.wav`;
+    const victorySoundPath = `${BASE_URL}assets/sounds/victorySounds/VictorySound.mp3`;
+    const victorySoundExpertPath = `${BASE_URL}assets/sounds/victorySounds/VictorySoundExpert.mp3`;
 
     let backgroundSong: AudioInstance | undefined;
     queueBackgroundSong();
@@ -20,7 +20,7 @@ export async function initGameSounds() {
     function queueBackgroundSong() {
         document.addEventListener('click', () => {
             if (backgroundSong) return;
-            backgroundSong = SoundPlayer.play(`${BASE_URL}assets/music/background.wav`, DEFAULT_MUSIC_VOLUME, true);
+            backgroundSong = SoundPlayer.play(`${BASE_URL}assets/sounds/background.mp3`, DEFAULT_MUSIC_VOLUME, true);
         }, { once: true });
     }
 
