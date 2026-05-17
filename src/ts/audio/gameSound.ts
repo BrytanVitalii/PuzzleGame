@@ -14,17 +14,14 @@ export async function initGameSounds() {
     const victorySoundExpertPath = `${BASE_URL}assets/music/victorySounds/VictorySoundExpert.wav`;
 
     let backgroundSong: AudioInstance | undefined;
-    tryStartBackgroundSong();
+    queueBackgroundSong();
 
-    // Try to start background music immediately, if didnt worked wait until interaction
-    function tryStartBackgroundSong() {
-        if(backgroundSong) return;
-        backgroundSong = SoundPlayer.play(`${BASE_URL}assets/music/background.wav`, DEFAULT_MUSIC_VOLUME, true, (_error: Error) => {
-            document.addEventListener('click', () => {
-                if(backgroundSong) return;
-                backgroundSong = SoundPlayer.play(`${BASE_URL}assets/music/background.wav`, DEFAULT_MUSIC_VOLUME, true);
-            }, { once: true });
-        });
+    // Queues the background song to play on the first user interaction, if it's not already playing
+    function queueBackgroundSong() {
+        document.addEventListener('click', () => {
+            if (backgroundSong) return;
+            backgroundSong = SoundPlayer.play(`${BASE_URL}assets/music/background.wav`, DEFAULT_MUSIC_VOLUME, true);
+        }, { once: true });
     }
 
     // Sounds
@@ -55,7 +52,7 @@ export async function initGameSounds() {
         playVictorySound(event as VictoryEvent);
     });
     window.addEventListener('game:stop-game', () => {
-        tryStartBackgroundSong();
+        queueBackgroundSong();
     });
     window.addEventListener('game:set-music-volume', (event) => {
         const volume = (event as BackgroundMusicVolumeEvent).detail.newVolume;
