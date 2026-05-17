@@ -10,7 +10,7 @@ An interactive web-based jigsaw puzzle game built with TypeScript and Vite.
 - Volume control and sound effects!
 - Custom image support!
 
-## Play right now: https://brytanvitalii.github.io/PuzzleGame/
+## Play right now: https://bv-puzzle-game.vercel.app
 
 ---
 ## Author
