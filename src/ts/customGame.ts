@@ -48,6 +48,13 @@ export function initCustomGameFunctionality() {
     // Event listeners
     playButton.addEventListener('click', onPlay);
 
+    // Initialize Level-Select Modal listeners
+    customGameModal.addEventListener('click', (e) => {
+        if (e.target === customGameModal) {
+            hideModal();
+        }
+    });
+
     uploadImageButton.addEventListener('click', async () => {
         onFileImported(await promptFile())
     })

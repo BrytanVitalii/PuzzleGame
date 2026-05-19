@@ -67,8 +67,6 @@ function generatePuzzles(
       const piece: PuzzlePiece = new PuzzlePiece(
         id,
         -1,
-        //(window.innerWidth / 2 - (screenPieceSize / 2)) + (Math.random() - 0.5) * window.innerWidth / 2,
-        //(window.innerHeight / 2 - (screenPieceSize / 2)) + (Math.random() - 0.5) * window.innerHeight / 2,
         spawnX,
         spawnY,
         screenPieceSize,

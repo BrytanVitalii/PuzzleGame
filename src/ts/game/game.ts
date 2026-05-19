@@ -127,7 +127,8 @@ function render(_deltaTime: number) {
     switch (currentGame.gameState) {
 
         case GameState.loading:
-            //renderLoading();
+            // This can contain a loading animation in the future...
+            // But it's so fast, that it's not really needed.
             break;
 
         case GameState.playing:
@@ -137,7 +138,8 @@ function render(_deltaTime: number) {
             break;
 
         case GameState.finished:
-            //renderFinished();
+            // Project structure is now more event based,
+            // so the victory screen is handled in the victoryPopup.ts file by listening to the game:victory event.
             break;
     }
 }
