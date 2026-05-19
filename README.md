@@ -1,4 +1,5 @@
 # 🧩 Puzzle Game
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/9947d5ad-5be3-4131-9082-3ae59b635639" />
 
 An interactive web-based jigsaw puzzle game built with TypeScript and Vite.
 
@@ -12,10 +13,10 @@ An interactive web-based jigsaw puzzle game built with TypeScript and Vite.
 
 ## Play right now: https://bv-puzzle-game.vercel.app
 
----
+
 ## Author
 
-Brytan Vitalii (v0.9)
+- Brytan Vitalii
 
 
 # 🧑‍💻 Quick Start
