@@ -6,6 +6,7 @@ import { initGameSounds } from "./audio/gameSound";
 import { initVictoryModal } from "./game/victoryPopup";
 import { initBackground } from "./game/puzzle/background";
 import { initCustomGameFunctionality } from "./customGame";
+import { inject } from '@vercel/analytics';
 
 initMainMenu();
 initGameSounds();
@@ -13,3 +14,6 @@ initLevelSelect();
 initCustomGameFunctionality();
 initVictoryModal();
 initBackground();
+
+// Initialize Vercel Web Analytics
+inject();
